@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h4 class="">รายชื่อพนังงาน</h4>
+    <hr />
+    <div class="container">
+    <div class="row">
+        <div class="col-4">
+            Start Date: <input id="startDate" width="276" />
+        </div>
+        <div class="col-4">
+            End Date: <input type="datetime"/>
+            <button class="btn btn-primary w-30 h-30" onclick="test()">ค้นหา</button>
+        </div>
+        <div class="col text-right">
+           <button class="btn btn-info">Load Flie Text</button>
+        </div>
+    </div>
+    <div class="my-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DATE</th>
+                    <th>CODE</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>DEPARTMENT</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 1; i < 100; i ++)
+                {
+                <tr>
+
+                    <td>@i</td>
+                    <td>04/26/2024 6:51:13</td>
+                    <td>1234</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>IT</td>
+
+                </tr>
+                }
+                </tbody>
+        </table>
+    </div>
+</div>
+    <table></table>
+</div>
+<script>
+    function test() {
+        alert('Test')
+    };
+   
+</script>
