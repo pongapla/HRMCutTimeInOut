@@ -8,26 +8,25 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\tlm-mis5\\.nuget\\packages\\": {}
+    "/Users/kittiphobmaynok/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
+      "projectUniqueName": "/Users/kittiphobmaynok/Desktop/HRMCuttimeInOut/HRMCutTimeInOut/HRMCutTimeInOut/HRMCutTimeInOut.csproj",
       "projectName": "HRMCutTimeInOut",
-      "projectPath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
-      "packagesPath": "C:\\Users\\tlm-mis5\\.nuget\\packages\\",
-      "outputPath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut\\obj\\",
+      "projectPath": "/Users/kittiphobmaynok/Desktop/HRMCuttimeInOut/HRMCutTimeInOut/HRMCutTimeInOut/HRMCutTimeInOut.csproj",
+      "packagesPath": "/Users/kittiphobmaynok/.nuget/packages/",
+      "outputPath": "/Users/kittiphobmaynok/Desktop/HRMCuttimeInOut/HRMCutTimeInOut/HRMCutTimeInOut/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tlm-mis5\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/kittiphobmaynok/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/local/share/dotnet/sdk/7.0.315/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -51,10 +50,25 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-x64",
+            "version": "[3.1.32, 3.1.32]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -63,7 +77,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.315/RuntimeIdentifierGraph.json"
       }
     }
   }

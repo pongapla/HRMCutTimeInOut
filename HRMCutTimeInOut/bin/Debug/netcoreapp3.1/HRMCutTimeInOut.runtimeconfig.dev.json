@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\tlm-mis5\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\tlm-mis5\\.nuget\\packages"
+      "/Users/kittiphobmaynok/.dotnet/store/|arch|/|tfm|",
+      "/Users/kittiphobmaynok/.nuget/packages"
     ]
   }
 }

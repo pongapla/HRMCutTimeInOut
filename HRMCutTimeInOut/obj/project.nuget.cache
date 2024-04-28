@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+hCKBEr9v+kPz2jidfnTqgKMWh8LUo5MIz6AhvoziTFkZmNC39dzS8qEtJX6VTYBTp7Th4ykedei3hU6jUmTA==",
+  "dgSpecHash": "g+h1iW3HD22n3lBgap1JEnKvvuv+xtoMTCinXcGh9Dmsjuvfg6uCSIoA9hXEyb8jXX1wyHh/rSqy61RcoNJTAA==",
   "success": true,
-  "projectFilePath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/kittiphobmaynok/Desktop/HRMCuttimeInOut/HRMCutTimeInOut/HRMCutTimeInOut/HRMCutTimeInOut.csproj",
+  "expectedPackageFiles": [
+    "/Users/kittiphobmaynok/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/kittiphobmaynok/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512",
+    "/Users/kittiphobmaynok/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
