@@ -1,13 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Views\User\" />
+    <None Remove="Data\" />
+    <None Remove="Data\SQLSERVER\" />
+    <None Remove="Data\ACCESS\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\SQLSERVER\" />
+    <Folder Include="Data\ACCESS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.18">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.18" />
+    <PackageReference Include="System.Data.Odbc" Version="9.0.0-preview.3.24172.9" />
   </ItemGroup>
 </Project>

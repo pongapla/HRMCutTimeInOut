@@ -1,33 +1,43 @@
-﻿<Properties StartupConfiguration="{6943E2E2-A846-414F-B62F-114D88BF739D}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.HRMCutTimeInOut PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+﻿<Properties NuGet.AddPackagesDialog.IncludePrerelease="True" StartupConfiguration="{6943E2E2-A846-414F-B62F-114D88BF739D}|Default">
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRMCutTimeInOut/Views/User/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRMCutTimeInOut/Data/SQLSERVER/User.cs">
     <Files>
-      <File FileName="HRMCutTimeInOut/Controllers/UserController.cs" Line="36" Column="20" />
-      <File FileName="HRMCutTimeInOut/Views/User/Index.cshtml" Line="8" Column="1" />
+      <File FileName="HRMCutTimeInOut/Controllers/UserController.cs" />
+      <File FileName="HRMCutTimeInOut/Views/User/Index.cshtml" />
+      <File FileName="HRMCutTimeInOut/Models/User.cs" />
+      <File FileName="HRMCutTimeInOut/appsettings.json" />
+      <File FileName="HRMCutTimeInOut/Startup.cs" />
+      <File FileName="HRMCutTimeInOut/Models/ErrorViewModel.cs" />
+      <File FileName="HRMCutTimeInOut/Views/Home/Index.cshtml" />
+      <File FileName="HRMCutTimeInOut/Views/Shared/_Layout.cshtml" />
+      <File FileName="HRMCutTimeInOut/Data/SQLSERVER/User.cs" Line="1" Column="14" />
+      <File FileName="HRMCutTimeInOut/Data/ACCESS/Time.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HRMCutTimeInOut">
-            <Node name="HRMCutTimeInOut">
+          <Node name="HRMCutTimeInOut" expanded="True">
+            <Node name="HRMCutTimeInOut" selected="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Views">
-                <Node name="Home" expanded="True" />
-                <Node name="User" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+              <Node name="Data" expanded="True">
+                <Node name="SQLSERVER" expanded="True" />
               </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="HRMCutTimeInOut" expanded="True" selected="True" />
+        </State>
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.HRMCutTimeInOut PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>

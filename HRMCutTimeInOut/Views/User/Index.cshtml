@@ -1,7 +1,15 @@
-﻿@model IEnumerable<HRMCutTimeInOut.Models.User>
+﻿@model IEnumerable<HRMCutTimeInOut.Models.Users>
 @{
     ViewData["Title"] = "User Page";
 }
 
 <h1>User</h1>
 
+@foreach(var item in Model)
+{
+      <p> รหัสพนักงาน :  @item.Code;</p>
+      <p> ชื่อพนักงาน : @item.Name</p>
+      <p> นามสกุล : @item.Lname</p>
+      <p> แผนก : @item.Department</p>
+      <hr />
+}
