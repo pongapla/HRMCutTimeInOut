@@ -1,15 +1,56 @@
 ﻿@model IEnumerable<HRMCutTimeInOut.Models.Users>
+
 @{
-    ViewData["Title"] = "User Page";
+    ViewData["Title"] = "Home Page";
 }
 
-<h1>User</h1>
+<div>
+    <h4 class="">รายชื่อพนักงาน</h4>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                Start Date: <input id="startDate" width="276" />
+            </div>
+            <div class="col-4">
+                End Date: <input type="datetime" />
+                <button class="btn btn-primary w-30 h-30" onclick="test()">ค้นหา</button>
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-info">Load File Text</button>
+            </div>
+        </div>
+        <div class="my-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>DATE</th>
+                        <th>CODE</th>
+                        <th>Name</th>
+                        <th>DEPARTMENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>xxx</td>
+                            <td>@item._DateTime</td>
+                            <td>@item.Code</td>
+                            <td>@item.Name</td>
+                            <td>@item.Department</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <table></table>
+</div>
+<script>
+    function test() {
+        alert('Test')
+    };
 
-@foreach(var item in Model)
-{
-      <p> รหัสพนักงาน :  @item.Code;</p>
-      <p> ชื่อพนักงาน : @item.Name</p>
-      <p> นามสกุล : @item.Lname</p>
-      <p> แผนก : @item.Department</p>
-      <hr />
-}
+</script>
