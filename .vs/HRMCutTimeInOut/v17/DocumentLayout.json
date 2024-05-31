@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6943E2E2-A846-414F-B62F-114D88BF739D}|HRMCutTimeInOut\\HRMCutTimeInOut.csproj|d:\\general\\asp_net\\hrmcuttimeinout\\hrmcuttimeinout\\views\\shift\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6943E2E2-A846-414F-B62F-114D88BF739D}|HRMCutTimeInOut\\HRMCutTimeInOut.csproj|solutionrelative:hrmcuttimeinout\\views\\shift\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6943E2E2-A846-414F-B62F-114D88BF739D}|HRMCutTimeInOut\\HRMCutTimeInOut.csproj|d:\\general\\asp_net\\hrmcuttimeinout\\hrmcuttimeinout\\controllers\\shiftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6943E2E2-A846-414F-B62F-114D88BF739D}|HRMCutTimeInOut\\HRMCutTimeInOut.csproj|solutionrelative:hrmcuttimeinout\\controllers\\shiftcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\Views\\Shift\\Index.cshtml",
+              "RelativeDocumentMoniker": "HRMCutTimeInOut\\Views\\Shift\\Index.cshtml",
+              "ToolTip": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\Views\\Shift\\Index.cshtml",
+              "RelativeToolTip": "HRMCutTimeInOut\\Views\\Shift\\Index.cshtml",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAAAJoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T03:31:33.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShiftController.cs",
+              "DocumentMoniker": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\Controllers\\ShiftController.cs",
+              "RelativeDocumentMoniker": "HRMCutTimeInOut\\Controllers\\ShiftController.cs",
+              "ToolTip": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\Controllers\\ShiftController.cs",
+              "RelativeToolTip": "HRMCutTimeInOut\\Controllers\\ShiftController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T03:20:11.184Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,32 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "D:\\General\\ASP_NET\\HRMCuttimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj": {}
+    "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj": {}
   },
   "projects": {
-    "D:\\General\\ASP_NET\\HRMCuttimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj": {
+    "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\General\\ASP_NET\\HRMCuttimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
+        "projectUniqueName": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
         "projectName": "HRMCutTimeInOut",
-        "projectPath": "D:\\General\\ASP_NET\\HRMCuttimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
+        "projectPath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\HRMCutTimeInOut.csproj",
         "packagesPath": "C:\\Users\\tlm-mis5\\.nuget\\packages\\",
-        "outputPath": "D:\\General\\ASP_NET\\HRMCuttimeInOut\\HRMCutTimeInOut\\obj\\",
+        "outputPath": "D:\\General\\ASP_NET\\HRMCutTimeInOut\\HRMCutTimeInOut\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages"
+        ],
         "configFilePaths": [
           "C:\\Users\\tlm-mis5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
         },
@@ -42,9 +47,21 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.102.2, )"
+            },
+            "LdapAuthentication": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[7.0.18, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.18, )"
@@ -65,9 +82,29 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "System.Data.Odbc": {
               "target": "Package",
-              "version": "[9.0.0-preview.3.24172.9, )"
+              "version": "[7.0.0, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.DirectoryServices.AccountManagement": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.3.3, )"
             }
           },
           "imports": [
@@ -89,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     }

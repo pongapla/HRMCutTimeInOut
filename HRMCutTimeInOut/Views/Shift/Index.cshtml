@@ -1,0 +1,167 @@
+﻿@model IEnumerable<HRMCutTimeInOut.Models.Shift>;
+@{
+    ViewData["Title"] = "Shift Page";
+}
+<div class="container">
+    <div class="mt-4">
+        <h4>หน้าจัดการ กะของพนักงาน</h4>
+    </div>
+    
+    <div class="col-12 mt-4 row">
+        <div class="col-3 text-left">
+            <button class="btn btn-success" onclick="openModal()">
+                <i class="bi bi-plus-square"></i>
+                เพิ่มกะให้พนักงาน
+            </button>
+            
+        </div>
+    </div>
+
+    <div class="col mt-2">
+        <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Code Employee</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Shift Type</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.code</td>
+                        <td>@item.name</td>
+                        <td>@item.department</td>
+                        <td>@item.nameShift</td>
+                        <td class="text-center">
+                            <button class="btn btn-info text-white" 
+                            onclick="editShift('@item.code', '@item.nameShift')">
+                                <i class="bi bi-pencil"></i>
+                                แก้ไข
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-controller="Shift" asp-action="AddShift" onsubmit="return validateForm()">
+            <div class="modal-body">
+                
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">รหัสพนักงาน :</label>
+                        <input type="text" name="code" class="form-control" id="code">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">เลือกกะพนักงาน :</label>
+                        <select class="form-control form-control-md" name="shift" id="shift">
+                            <option value="A">Shift-A</option>
+                            <option value="B">Shift-B</option>
+                            <option value="C">Shift-C</option>
+                            <option value="D">Shift-D</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" onclick="validateForm()">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <div class="spinner-grow d-none" role="status">
+        <span class="visually-hidden"></span>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link  href="https://cdn.datatables.net/v/dt/dt-2.0.7/datatables.min.css" rel="stylesheet">
+<script  src="https://cdn.datatables.net/v/dt/dt-2.0.7/datatables.min.js"></script>
+
+<script>
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#example').DataTable({
+
+        });
+    });
+
+    function openModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        myModal.show();
+    }
+   
+    function validateForm() {
+        var code = document.getElementById("code").value;
+        var shift = document.getElementById("shift").value;
+        if (code === "" || shift === "") {
+            Swal.fire({
+                icon: "error",
+                title: "คุณไม่ได้กรอกข้อมูล",
+                text: "หรัสพนักงานและ กะต้องไม่เป็นค่าว่าง!"
+            });
+            return false;
+        }
+        var loadingSpinners = document.querySelectorAll(".spinner-grow");
+        loadingSpinners.forEach(function (spinner) {
+            spinner.classList.remove("d-none");
+            document.querySelector(".mt-5").style.opacity = 0.2;
+        });
+        return true;
+    }
+
+    var actionName = ''; // สร้างตัวแปร global เพื่อเก็บค่า actionName
+
+    function openModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        myModal.show();
+
+        if (actionName === 'edit') {
+            document.getElementById('exampleModalLabel').textContent = 'แก้ไขกะพนักงาน';
+        } else {
+            document.getElementById('exampleModalLabel').textContent = 'เพิ่มกะพนักงาน';
+        }
+    }
+
+    function editShift(code, shift) {
+       
+        // ให้ input code เป็น disable
+        document.getElementById("code").value = code;
+        //document.getElementById("code").setAttribute("disabled", "disabled");
+
+        // กำหนดค่าให้กับฟิลด์อื่นๆ
+        document.getElementById("shift").value = shift;
+
+        // กำหนดค่า actionName เป็น 'edit' เพื่อใช้ในฟังก์ชัน openModal
+        actionName = 'edit';
+
+        // แก้ไข Action
+        var formElement = document.querySelector('form');
+        formElement.setAttribute('action', 'Shift/EditShift');
+
+        // เปิด modal
+        openModal();
+    }
+
+    function resetForm() {
+        document.getElementById("code").value = "";
+        document.getElementById("code").removeAttribute("disabled");
+        document.getElementById("shift").value = "A";
+    }
+</script>

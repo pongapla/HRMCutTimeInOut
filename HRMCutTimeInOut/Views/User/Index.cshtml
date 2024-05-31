@@ -1,27 +1,68 @@
-﻿@model IEnumerable<HRMCutTimeInOut.Models.Users>
+﻿@model IEnumerable<HRMCutTimeInOut.Models.Timeinout>;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "User Page";
 }
 
-<div>
-    <h4 class="">รายชื่อพนักงาน</h4>
+<div class="mt-5">
+    <h4 class="">รายชื่อพนักงานพร้อมกับข้อมูลเวลาเข้า-ออกของพนักงาน</h4>
     <hr />
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                Start Date: <input id="startDate" width="276" />
+            <div class="col-7">
+                <form method="post" asp-controller="User" asp-action="Search" class="col-12 row d-grid gap-1 needs-validation" onsubmit="return validateForm()" novalidate>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleDate">Select Start Date</label>
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleDate">Select End Date</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate" required>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">
+                            ค้นหา
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="col-4">
-                End Date: <input type="datetime" />
-                <button class="btn btn-primary w-30 h-30" onclick="test()">ค้นหา</button>
-            </div>
+            
             <div class="col text-right">
-                <button class="btn btn-info">Load File Text</button>
-            </div>
+                @if (Model.Count() == 0)
+                {
+                    <button class="btn btn-info">
+                        <i class="bi bi-cloud-arrow-down"></i>
+                        ดึงข้อมูลจากเครื่องHIP
+                    </button>
+                    <button class="btn btn-primary" disabled>
+                        <i class="bi bi-alarm"></i>
+                        ตัดเวลาทำงานของพนักงาน
+                    </button>
+                    <button class="btn btn-success btn-export-excel" disabled>
+                        <i class="bi bi-filetype-xls"></i>
+                        Export Excel
+                    </button>
+                }
+                else
+                {
+                    <button class="btn btn-info" onclick="loadHIP()">ดึงข้อมูลจากเครื่องHIP</button>
+                    <button class="btn btn-primary" onclick="timeOverview()">
+                        <i class="bi bi-alarm"></i>
+                        ตัดเวลาทำงานของพนักงาน
+                    </button>
+                    
+                    <button class="btn btn-success btn-export-excel" onclick="genExcel()">
+                        <i class="bi bi-filetype-xls"></i>
+                        Export Excel
+                     </button>
+                }
+            </div> 
         </div>
         <div class="my-2">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -32,25 +73,260 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in Model)
+                    @foreach (var item in Model)
                     {
                         <tr>
-                            <td>xxx</td>
-                            <td>@item._DateTime</td>
+                            <td>@item.No</td>
+                            <td>@item.FormattedDateTime</td>
                             <td>@item.Code</td>
                             <td>@item.Name</td>
-                            <td>@item.Department</td>
+                            <td>@item.DpName</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-warning" role="alert">
+                ไม่พบข้อมูลพนักงาน เข้าออก
+            </div>
+        }
     </div>
     <table></table>
 </div>
+<div class="text-center">
+    <div class="spinner-grow d-none" role="status">
+        <span class="visually-hidden"></span>
+    </div>
+</div>
 <script>
-    function test() {
-        alert('Test')
-    };
+    
+    function validateForm() {
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+        if (startDate === "" || endDate === "") {
+            Swal.fire({
+                icon: "error",
+                title: "คุณไม่ได้เลือกวันที่",
+                text: "วันที่ต้องไม่เป็นค่าว่าง!"
+            });
+            return false;
+        }
+        var loadingSpinners = document.querySelectorAll(".spinner-grow");
+        loadingSpinners.forEach(function (spinner) {
+            spinner.classList.remove("d-none");
+            document.querySelector(".mt-5").style.opacity = 0.2;
+        });
+        return true;
+    }
+
+    async function genExcel() {
+        var tableRows = document.querySelectorAll("tbody tr"); // เลือกทุกแถวในตาราง
+
+        var modelData = [];
+        
+        tableRows.forEach(function (row) {
+            var cells = row.querySelectorAll("td"); // เลือกเซลล์ทุกเซลล์ในแถว
+
+            var rowData = {
+                No: cells[0].innerText,
+                _DateTime: cells[1].innerText,
+                Code: cells[2].innerText,
+                Name: cells[3].innerText,
+                DpName: cells[4].innerText
+            };
+
+            modelData.push(rowData); // เพิ่มข้อมูลแถวลงใน modelData
+        });
+        
+        try {
+            const response = await fetch("/User/ExportExcel", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(modelData)
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "data.xlsx";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("There was a problem with your fetch operation:", error);
+        }
+    }
+
+    async function timeOverview() {
+
+        var spinner = document.querySelector(".spinner-grow");
+        spinner.classList.remove("d-none");
+        document.querySelector(".mt-5").style.opacity = 0.2;
+        
+        
+        var tableRows = document.querySelectorAll("tbody tr"); // เลือกทุกแถวในตาราง
+
+        var modelData = [];
+        tableRows.forEach(function (row) {
+            var cells = row.querySelectorAll("td"); // เลือกเซลล์ทุกเซลล์ในแถว
+
+            var rowData = {
+                No: cells[0].innerText,
+                _DateTime: cells[1].innerText,
+                Code: cells[2].innerText,
+                Name: cells[3].innerText,
+                DpName: cells[4].innerText
+            };
+
+            modelData.push(rowData); // เพิ่มข้อมูลแถวลงใน modelData
+        });
+
+        var minDateTime = new Date(modelData[0]._DateTime); // สมมติว่าให้ข้อมูลตัวแรกเป็นค่าเริ่มต้น
+        
+        modelData.forEach(function (rowData) {
+            var currentDateTime = new Date(rowData._DateTime);
+            if (currentDateTime < minDateTime) {
+                minDateTime = currentDateTime;
+            }
+        });
+        
+        var startDate = formatDate(minDateTime); // แปลงเป็นรูปแบบ "dd-MM-yyyy"
+        
+        // หาวันที่มากที่สุด (endDate)
+        var maxDateTime = new Date(modelData[0]._DateTime); // สมมติว่าให้ข้อมูลตัวแรกเป็นค่าเริ่มต้น
+        modelData.forEach(function (rowData) {
+            var currentDateTime = new Date(rowData._DateTime);
+            if (currentDateTime > maxDateTime) {
+                maxDateTime = currentDateTime;
+                //maxDateTime.setDate(maxDateTime.getDate() - 1); // ลบหนึ่งวัน
+            }
+        });
+        var endDate = formatDate(maxDateTime); // แปลงเป็นรูปแบบ "dd-MM-yyyy"
+        
+        // ฟังก์ชันสำหรับแปลงวันที่เป็นรูปแบบ "dd-MM-yyyy"
+        function formatDate(date) {
+            var dd = String(date.getDate()).padStart(2, '0');
+            var mm = String(date.getMonth() + 1).padStart(2, '0'); // กำหนดเดือน +1 เนื่องจากมีการนับเริ่มจาก 0
+            var yyyy = date.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        try {
+            const requestData = {
+                startDate: startDate,
+                endDate: endDate
+            };
+            
+            const response = await fetch("/User/TimeOverview", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestData)
+            });
+            
+            // เมื่อได้รับการตอบกลับสำเร็จแล้ว
+            if (response.ok) {
+                spinner.classList.add("d-none");
+                response.json().then(data => {
+                    
+                    // ส่งข้อมูลไปยังหน้า Overview โดยใช้ fetch API
+                    fetch("/User/Overview", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data.data)
+                    })
+                        .then(response => response.text()) // รับข้อมูลที่ส่งกลับมาจาก action method
+                        .then(result => {
+                            // ใช้ข้อมูลที่ได้จาก action method ในการแสดงหน้า Overview
+                            document.open();
+                            document.write(result);
+                            document.close();
+                        })
+                        .catch(error => console.error("Error:", error));
+                });
+                
+            } else {
+                spinner.classList.add("d-none");
+                // จัดการเมื่อเกิดข้อผิดพลาดในการเรียก action
+                console.error("There was a problem with your fetch operation:", response.statusText);
+            }
+        } catch (error) {
+            console.error("There was a problem with your fetch operation:", error);
+        }
+    }
+   
+
+    async function loadHIP() {
+        var loadingSpinners = document.querySelectorAll(".spinner-grow");
+        loadingSpinners.forEach(function (spinner) {
+            spinner.classList.remove("d-none");
+        });
+
+        // Reduce the opacity of the element with class ".mt-5"
+        document.querySelector(".mt-5").style.opacity = 0.2;
+
+        try {
+            const response = await fetch("/User/DownloadHIP", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            // Remove the spinners when the response is ok
+            loadingSpinners.forEach(function (spinner) {
+                spinner.classList.add("d-none");
+            });
+
+            // Reset the opacity of the element with class ".mt-5"
+            document.querySelector(".mt-5").style.opacity = 1;
+
+            Swal.fire("ดึงข้อมูลจากเครื่อง HIP เสร็จแล้ว!");
+
+        } catch (error) {
+            console.error("There was a problem with your fetch operation:", error);
+
+            // Remove the spinners in case of error as well
+            loadingSpinners.forEach(function (spinner) {
+                spinner.classList.add("d-none");
+            });
+
+            // Reset the opacity of the element with class ".mt-5"
+            document.querySelector(".mt-5").style.opacity = 1;
+        }
+    }
 
 </script>
+<style>
+    body {
+        margin = 0;
+    }
+
+    .btn {
+        margin-top: 32px;
+    }
+
+    .spinner-grow {
+        position: absolute;
+        top: 400px;
+        left: 600px;
+        width: 50px;
+        height: 50px;
+    }
+</style>
